@@ -45,7 +45,7 @@ impl SoftmaxClassfier {
     //Train using manual gradient descent
     pub fn train(&mut self, x: &Vec<Vec<f32>>, y: &Vec<usize>, epochs: usize) {
         let n_samples = y.len() as f32;
-        let num_classes = se;f.bias.len();
+        let num_classes = self.bias.len();
 
         for epoch in 0..epochs {
             let predictions = self.predict(x);
