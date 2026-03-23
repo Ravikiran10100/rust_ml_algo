@@ -70,12 +70,12 @@ impl KMeans {
     }
 
     //Train K-Means
-    pub fn fit(&mut self, x: &Vec<Vec<f32>>) -> Vec<usze> {
+    pub fn fit(&mut self, x: &Vec<Vec<f32>>) -> Vec<usize> {
         self.init_centroids(x);
 
         let mut labels = vec![0; x.len()];
 
-        for iter in 0..self.max_iter {
+        for iter in 0..self.max_iters {
             labels = self.assign_clusters(x);
 
             self.update_centroids(x, &labels);
