@@ -62,7 +62,7 @@ impl PCA {
     //Power iteration to get top eigenvector
     fn power_iteration(&self, matrix: &Vec<Vec<f32>>, iterations: usize) -> Vec<f32> {
         let n = matrix.len();
-        let mut v = vec![0.0; n];
+        let mut v = vec![1.0; n];
 
         for _ in 0..iterations {
             let mut new_v = vec![0.0; n];
@@ -74,6 +74,11 @@ impl PCA {
             }
 
             let norm = (new_v.iter().map(|x| x * x).sum::<f32>()).sqrt();
+
+            if norm == 0.0 {
+                break;
+            }
+            
             for i in 0..n {
                 new_v[i] /= norm;
             }
