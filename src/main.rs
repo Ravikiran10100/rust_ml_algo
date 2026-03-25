@@ -1,17 +1,18 @@
-use rust_ml_algo::models::logistic_regression::LogisticRegression;
+use rust_ml_algo::models::pca::PCA;
 
 fn main() {
     let x = vec![
-        vec![0.0, 0.0],
-        vec![0.0, 1.0],
-        vec![1.0, 0.0],
-        vec![1.0, 1.0],
+        vec![2.5, 2.4],
+        vec![0.5, 0.7],
+        vec![2.2, 2.9],
+        vec![1.9, 2.2],
+        vec![3.1, 3.0]
     ];
-    let y = vec![0.0, 0.0, 0.0, 0.0];
-    let mut model = LogisticRegression::new(2, 0.1);
-    model.train(&x, &y, 1000);
 
-    let preds = model.predict(&x);
-    println!("Predictions: {:?}", preds);
+    let mut pca = PCA::new(1);
+    pca.fit(&x);
+
+    let transformed = pca.transform(&x);
+
+    println!("Reduced Data: {:?}", transformed)
 }
-
