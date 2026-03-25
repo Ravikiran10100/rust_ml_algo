@@ -1,4 +1,4 @@
-use core::error;
+
 
 pub struct LinearRegression {
     pub weights: Vec<f32>,
@@ -12,7 +12,7 @@ impl LinearRegression {
         LinearRegression {
             weights: vec![0.0; num_features],
             bias: 0.0,
-            learning_rate: 0.0,
+            learning_rate,
         }
     }
 
