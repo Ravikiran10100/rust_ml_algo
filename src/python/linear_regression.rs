@@ -32,8 +32,8 @@ impl PyLinearRegression {
 
     fn predict(&self, x: Vec<Vec<f32>>) -> PyResult<Vec<f32>> {
         match &self.model {
-            Some(model) => Oko(model.predict(&x)),
-            None => Err(py03::exceptions::PyRuntimeError::new_err(
+            Some(model) => Ok(model.predict(&x)),
+            None => Err(pyo3::exceptions::PyRuntimeError::new_err(
                 "Model has not been fitted yet",
             )),
         }

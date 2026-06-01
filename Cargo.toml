@@ -3,6 +3,10 @@ name = "rust_ml_algo"
 version = "0.1.0"
 edition = "2024"
 
+[lib]
+name = "rust-ml"
+crate-type = ["cdylib"]
+
 [dependencies]
-pyo3 = "0.28.2"
+pyo3 = { version = "0.28.2", features = ["extension-module"] }
 
