@@ -12,11 +12,12 @@ pub struct PyLinearRegression {
 #[pymethods]
 impl PyLinearRegression {
     #[new]
-    fn new(learning_rate: Option<f32>, epochs: Option<usize>) -> Self {
+    #[pyo3(signature = (learning_rate=0.01, epochs=1000))]
+    fn new(learning_rate: f32, epochs: usize) -> Self {
         Self {
             model: None,
-            learning_rate: learning_rate.unwrap_or(0.01),
-            epochs: epochs.unwrap_or(1000),
+            learning_rate,
+            epochs,
         }
     }
 
